@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Add New Product</title>
+</head>
+
+<body>
+  <main class="adminMain" id="addProduct">
+    {% include "partials/adminSidebar.html" %}
+    <div class="adminWrapper">
+      <div class="contentWrapper sectionSpaceBelow">
+        <h1 class="text-center">Add New Product</h1>
+        <form id="addProductForm" onsubmit="submitAddProductForm(event)" class="siteForm">
+          <div class="inputContainer">
+            <label for="productName">Product Name <span class="text-danger">*</span></label>
+            <input type="text" name="productName" required id="productName" class="formInput inputToSend" />
+          </div>
+          <div class="inputContainer">
+            <label for="productCategory">Product Category <span class="text-danger">*</span></label>
+            <select name="productCategory" required id="productCategory" class="formInput inputToSend">
+              <option value="" selected disabled>..Choose</option>
+              <option value="candleContainers">Candle Containers</option>
+              <option value="siliconMolds">Silicon Molds</option>
+              <option value="waxes">Waxes</option>
+              <option value="fragranceOils">Frangrance Oils</option>
+              <option value="colorPigments">Color Pigments</option>
+              <option value="candleWicks">Candle Wicks</option>
+              <option value="essentials">Essentials</option>
+            </select>
+          </div>
+          <div class="inputContainer">
+            <label for="productPriceInfo">Product Price Info <span class="text-danger">*</span></label>
+            <textarea id="productPriceInfo" placeholder="1 piece - ₹ 90 per piece,24 pieces - ₹ 80 per piece,72 pieces - ₹ 70 per piece,144 pieces - ₹ 65 per piece" rows="4" cols="50" class="formInput inputToSend" required></textarea>
+            <small>Add all Items comma Separated</small>
+          </div>
+          <div class="inputContainer">
+            <label for="productDescription">Product Description <span class="text-danger">*</span></label>
+            <textarea name="description" id="productDescription" rows="4" cols="50" class="formInput inputToSend" required></textarea>
+          </div>
+          <div class="inputContainer">
+            <label for="productImage">Upload Product Image <span class="text-danger">*</span></label>
+            <input type="file" accept=".png,.jpeg,.jpg" onchange="phototoString(event)" class="formInput" required id="productImage" />
+            <input type="hidden" name="productImage" class="inputToSend" />
+          </div>
+          <div class="inputContainer">
+            <label for="productWidth">Product Width</label>
+            <input type="number" name="width" placeholder="in inches" max="0" id="productWidth" class="formInput inputToSend" />
+          </div>
+          <div class="inputContainer">
+            <label for="productHeight">Product Height</label>
+            <input type="number" name="height" placeholder="in inches" max="0" id="productHeight" class="formInput inputToSend" />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit Data</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/admin/addProduct.js"></script>
+  </main>
+  {% include "partials/siteFooter.html" %}
+</body>
+
+</html>

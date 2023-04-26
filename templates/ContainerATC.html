@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <title>Document</title>
+        {% include "partials/cdn.html" %}
+
+    </head>
+    <body>
+        {% include "partials/siteHeader.html" %}
+
+        <section class="ATCmain">
+            <div class="ATCcontainer">
+                <div class="ATCgrid">
+                    <div class="ATCimg">
+                        <img src="/static/images/container_2.jpeg" alt="">
+                        
+                    </div>
+                    <div class="ATCinput">
+                        <h2 class="ATChead">{{size}} Container</h2>
+                        <p class="ATCdesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam adipisci non, aliquam odio provident facere optio sed cumque nisi? Officiis rerum numquam ut est placeat, illum harum esse libero nihil.</p>
+                        <form action="/test/" method="post">
+                            {% csrf_token %}
+                            <select name="set" id="">
+                                {% for a in set %}
+                                <option value="{{a}}">Set of {{a}}</option>
+                                
+                                {% endfor %}
+                            </select>
+                            <select name="color" id="">
+                                {% for a in color %}
+                                <option value="{{a}}">{{a}}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="text" readonly value="Wooden Lid">
+                            <input type="hidden" name="size" value="{{size}}">
+                            <input type="number" name="set_qnt"
+                                placeholder="Enter number of set">
+                            <input type="submit" class="ATCbtn" value="Add to Cart">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        {% include "partials/siteFooter.html" %}
+        <script src="/static/js/common.js"></script>
+    </body>
+</html>

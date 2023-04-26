@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Admin Login</title>
+</head>
+
+<body>
+  {% include "partials/siteHeader.html" %}
+  <main id="adminLogin">
+    <!-- Landing Section -->
+    <section class="allPagesBanner sectionSpaceBelow">
+      <h1>Admin Login</h1>
+    </section>
+    <!-- /Landing Section -->
+    <!-- Admin Login Form -->
+    <section class="adminForm sectionSpaceBelow">
+      <div class="container">
+        <form id="adminLoginForm" class="siteForm sm" onsubmit="submitAdminLoginForm(event)">
+          <div class="inputContainer">
+            <label for="adminEmail">Email <span class="text-danger">*</span></label>
+            <input type="email" name="email" id="adminEmail" class="formInput inputToSend" required />
+          </div>
+          <div class="inputContainer">
+            <label for="adminPassword">Password <span class="text-danger">*</span></label>
+            <input type="password" name="password" id="adminPassword" class="formInput inputToSend" required />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <form action="/adminPanel/editProduct/" method="post" class="d-none" id="redirectForm">{% csrf_token %}
+      <input type="hidden" name="name" id="redirectName" />
+    </form>
+    <!-- /Admin Login Form -->
+    {% include "partials/siteFooter.html" %}
+  </main>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/admin/adminLogin.js"></script>
+</body>
+
+</html>

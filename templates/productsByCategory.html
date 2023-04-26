@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Shop</title>
+  <style>
+
+    /* .cstm_btn:hover{
+      font-size: 0.8em;transition: 0.1s;
+      font-weight: 700;
+      box-shadow: 2px 2px 12px 2px lightgray;
+    } */
+  </style>
+</head>
+
+<body>
+  {% include "partials/siteHeader.html" %}
+  <main id="productsByCategory">
+    <div id="shopModalBackDrop" class="shopModalBackDrop" onclick="toggleShopModal()"></div>
+    <div id="shopModal" class="shopModal">
+      <img id="modalProductImg" src="" alt="" />
+      <div class="shopModalInfo">
+        <h2 id="modalProductTitle"></h2>
+        <h4 class="color-pink" id="modalProductPrice"></h4>
+      </div>
+      <div class="shopModalCta">
+        <p class="modalProductDescription"></p>
+        <p class="modalProductDimensions"></p>
+        <!-- =? MY -->
+        <div class="productUnit"></div>
+        {% if loggedInCustomerName == '' %}
+        <a href="/login/" class="btn btn-primary">Login for Cart</a>
+
+        <p class="modalProductunit d-none"></p>
+        <select name="" id="" class="modalInch d-none">
+          <option value="1">1 inch</option>
+          <option value="2">2 inch</option>
+          <option value="3">3 inch</option>
+          <option value="4">4 inch</option>
+          <option value="5">5 inch</option>
+          <option value="6">6 inch</option>
+          <option value="7">7 inch</option>
+        </select>
+        {% else %}
+        <div class="addToCartContainer">
+          <div class="cartQuantityContainer">
+            <!-- <input class="cartQuantity" value=''>
+            <button type="button" onclick="incrementBtn(event)" class="incrementBtn">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button> -->
+            <button type="button" onclick="decrementBtn(event)" class="decrementBtn">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <input class="cartQuantity" value="0"></input>
+            <button type="button" onclick="incrementBtn(event)" class="incrementBtn">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <p class="modalProductunit"></p>
+            <select name="FORINCHES" id="" class="modalInch d-none">
+              <option value="not inch">Select Size</option>
+              <option value="1">1 inch</option>
+              <option value="2">2 inch</option>
+              <option value="3">3 inch</option>
+              <option value="4">4 inch</option>
+              <option value="5">5 inch</option>
+              <option value="6">6 inch</option>
+              <option value="7">7 inch</option>
+            </select>
+            <!-- <select name="" id="">
+              <option value="">ml</option>
+              <option value="">l</option>
+            </select> -->
+          </div>
+          <button id="modalCartBtn" class="btn btn-primary" >Add to Cart</button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Landing Section -->
+    <section class="allPagesBanner sectionSpaceBelow">
+      <h1>SHOP</h1>
+    </section>
+    <!-- /Landing Section -->
+    <!-- Products Grid Section -->
+    <section class="productsWrapper sectionSpaceBelow">
+      <div class="container">
+        <div class="productContainer">
+          {% for product in productList %}
+          <button id="{{product.docId}}" onclick="addShopData(event)" class="productItem cstm_btn">
+            <img src="{{product.productImage}}" alt="{{product.productName}}" class="productImg" />
+            <p class="productTitle cstm_name">{{product.productName}}</p>
+            {% for price in product.productPriceInfo %}
+            <p class="productPrice d-none">{{price}}</p>
+            {% endfor %}
+            <p class="d-none productDescription">{{product.description}}</p>
+            
+            <p class="d-none productWidth">{{product.width}}</p>
+            <p class="d-none productHeight">{{product.height}}</p>
+            {% if product.unit == 'inch' %}
+              <p class="productUnit d-none" >{{product.unit}}</p>
+            {% else %}
+              <p class="productUnit d-none" >{{product.unit}}</p>
+            {% endif %}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- /Products Grid Section -->
+    {% include "partials/siteFooter.html" %}
+  </main>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/productsByCategory.js"></script>
+</body>
+
+</html>

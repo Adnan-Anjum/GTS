@@ -1,0 +1,166 @@
+<header class="siteHeader">
+  <div class="headerWrapper">
+    <!-- Header top section -->
+    <div class="headerTop">
+      <div class="container">
+        <div class="headerPhoneLink bigDisplayOnly">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <a href="" >(+91) 1234 567 899</a>
+        </div>
+        <div class="siteLogoContainer">
+          <a href="/">
+            <img src="/static/images/site-logo.png" alt="Grace the Space" class="siteLogo" />
+          </a>
+        </div>
+        <div class="headerIcons text-right">
+          <button type="button" class="hamburgerBtn" onclick="toggleHeaderMenu()">
+            <img src="/static/images/icon-hamburger.svg" alt="open menu" />
+          </button>
+          {% if loggedInCustomerName == '' %}
+          <a href="/login/" class="bigDisplayOnly">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            &nbsp; Login / Signup
+          </a>
+          {% else %}
+          <a href="/cart/" class="bigDisplayOnly color-black me-2">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </a>
+          <button onclick="user_profile(0)" class="bigDisplayOnly">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            &nbsp; {{loggedInCustomerName}}
+          </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- Header Categories Section -->
+    <div class="menuBackdrop" id="menuBackdrop" onclick="toggleHeaderMenu()"></div>
+    <div id="headerMenu" class="headerCategories">
+      <div class="categoriesHeading">
+        <h3>Main Menu</h3>
+        <button type="button" class="hamburgerBtn" onclick="toggleHeaderMenu()">
+          <img src="/static/images/icon-close.svg" alt="close menu" />
+        </button>
+      </div>
+      <div class="categoriesContent">
+        <nav class="headerLinks">
+          <ul>
+            <li>
+              {% if currentPage == 'candleContainers' %}
+              <a class="headerLink active" href="/shop/candleContainers/">Candle Containers</a>
+              {% else %}
+              <a class="headerLink" href="/shop/candleContainers/">Candle Containers</a>
+              {% endif %}
+            </li>
+            <!-- <li>
+              {% if currentPage == 'siliconMolds' %}
+              <a class="headerLink active" href="/shop/siliconMolds/">Silicon Molds</a>
+              {% else %}
+              <a class="headerLink" href="/shop/siliconMolds/">Silicon Molds</a>
+              {% endif %}
+            </li> -->
+            <li>
+              {% if currentPage == 'waxes' %}
+              <a class="headerLink active" href="/shop/waxes/">Waxes</a>
+              {% else %}
+              <a class="headerLink" href="/shop/waxes/">Waxes</a>
+              {% endif %}
+            </li>
+            <li>
+              {% if currentPage == 'fragranceOils' %}
+              <a class="headerLink active" href="/shop/fragranceOils">Fragrance Oils</a>
+              {% else %}
+              <a class="headerLink" href="/shop/fragranceOils">Fragrance Oils</a>
+              {% endif %}
+            </li>
+            <!-- <li>
+              {% if currentPage == 'colorPigments' %}
+              <a class="headerLink active" href="/shop/colorPigments/">Color Pigments</a>
+              {% else %}
+              <a class="headerLink" href="/shop/colorPigments/">Color Pigments</a>
+              {% endif %}
+            </li> -->
+            <li>
+              {% if currentPage == 'candleWicks' %}
+              <a class="headerLink active" href="/shop/candleWicks/">Candle Wicks</a>
+              {% else %}
+              <a class="headerLink" href="/shop/candleWicks/">Candle Wicks</a>
+              {% endif %}
+            </li>
+            <li>
+              {% if currentPage == 'essentials' %}
+              <a class="headerLink active" href="/shop/essentials/">Essentials</a>
+              {% else %}
+              <a class="headerLink" href="/shop/essentials/">Essentials</a>
+              {% endif %}
+            </li>
+          </ul>
+        </nav>
+        <div class="actionBtn smallDisplayOnly mt-2">
+          {% if loggedInCustomerName == '' %}
+          <a href="/login/">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            &nbsp; Login / Signup
+          </a>
+          {% else %}
+          <a href="/cart/" class="color-black me-2" >
+            Cart
+            <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i> -->
+          </a>
+          <br>
+          
+          <button onclick="user_profile(1)" class="smallScreenUser">
+            Orders
+          </button>
+          <br>
+          <button onclick="user_profile(0)" class="smallScreenUser">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            &nbsp; {{loggedInCustomerName}}
+          </button>
+          <div class="smallScreenLogout">
+            <button onclick="customerLogout()">Log out</button>
+          </div>
+          <input type="hidden" value="{{loggedInCustomerId}}" id="customerLoginId" />
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<input type="hidden" value="{{csrf_token}}" id="hiddenCsrfToken" />
+
+<!-- Custom Alert Box -->
+<div id="alertBackdrop" class="alertBackdrop" onclick="toggleAlert()"></div>
+<div class="alertBox" id="customerAlert">
+  <h5 class="m-0" id="alertMsg"></h5>
+  <button type="button" class="closeAlertBtn" onclick="toggleAlert()">
+    <i class="fa fa-close" aria-hidden="true"></i>
+  </button>
+</div>
+
+<button id="backToTop" class="backToTop" onclick="window.scrollTo(0,0);">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+  <p>To<br>Top</p>
+</button>
+
+<script>
+  // Header Menu
+  const menuBackdrop = document.getElementById('menuBackdrop');
+  const headerMenu = document.getElementById('headerMenu');
+  function toggleHeaderMenu() {
+    headerMenu.classList.toggle('show');
+    menuBackdrop.classList.toggle('show');
+  }
+  // Custom Alert
+  const customerAlert = document.getElementById('customerAlert');
+  const alertBackdrop = document.getElementById('alertBackdrop');
+  function alert(msg) {
+    customerAlert.querySelector('#alertMsg').innerHTML = msg;
+    toggleAlert();
+  }
+  function toggleAlert() {
+    customerAlert.classList.toggle('show');
+    alertBackdrop.classList.toggle('show');
+  }
+</script>

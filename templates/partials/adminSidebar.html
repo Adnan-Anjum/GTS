@@ -1,0 +1,89 @@
+<!-- Mobile only header -->
+<div class="adminHeader smallDisplayOnly">
+  <div class="container">
+    <a href="/adminPanel/">
+      <img src="/static/images/site-logo.png" alt="site logo" class="sidebarImg" />
+    </a>
+    <button type="button" onclick="toggleSidebar()" class="sidebarToggle">
+      <img src="/static/images/icon-hamburger.svg" alt="open menu" />
+    </button>
+  </div>
+</div>
+<nav id="adminSidebar" class="adminSidebar">
+  <div class="sidebarWrapper">
+    <div class="text-right smallDisplayOnly">
+      <button type="button" onclick="toggleSidebar()" class="sidebarToggle">
+        <img src="/static/images/icon-close.svg" alt="close menu" />
+      </button>
+    </div>
+    <a class="bigDisplayOnly" href="/adminPanel/">
+      <img src="/static/images/site-logo.png" alt="site logo" class="sidebarImg" />
+    </a>
+    {% if sidebarHeading == 'adminDashboard' %}
+    <h3 class="heading active">
+      <a href="/adminPanel/adminDashboard/">Dashboard</a>
+    </h3>
+    {% else %}
+    <h3 class="heading">
+      <a href="/adminPanel/adminDashboard/">Dashboard</a>
+    </h3>
+    {% endif %}
+    <!-- Products action button -->
+    {% if sidebarHeading == 'products' %}
+    <h3 class="heading active">Products</h3>
+    {% else %}
+    <h3 class="heading">Products</h3>
+    {% endif %}
+    {% if currentPage == 'addProduct' %}
+    <a class="subHeading active">Add Products</a><br>
+    {% else %}
+    <a href="/adminPanel/addProduct" class="subHeading">Add Products</a><br>
+    {% endif %}
+    {% if currentPage == 'editProduct' %}
+    <a class="subHeading active">Edit Products</a><br>
+    {% else %}
+    <a href="/adminPanel/editProduct" class="subHeading">Edit Products</a><br>
+    {% endif %}
+
+    <hr>
+    <button onclick="adminLogout()" type="button" class="btn btn-primary">Logout</button>
+  </div>
+</nav>
+
+<button id="backToTop" class="backToTop" onclick="window.scrollTo(0,0);">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+  <p>To<br>Top</p>
+</button>
+
+<script>
+  const adminSidebar = document.getElementById('adminSidebar');
+
+  function toggleSidebar() {
+    adminSidebar.classList.toggle('show');
+  }
+
+  function adminLogout() {
+  if (confirm('Sure you want to logout?')) {
+    fetch('/adminPanel/logoutAdmin/', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'X-CSRFToken': document.getElementById('hiddenCsrfToken').value,
+      },
+    }).then(res => {
+      return res.json();
+    }).then(data => {
+      switch (data.status) {
+        case 'failed':
+          alert('Something went wrong! Please try again after some time...');
+          break;
+        default:
+          window.location.href = '/adminPanel/';
+      }
+    })
+  }
+}
+</script>
+
+<input type="hidden" value="{{csrf_token}}" id="hiddenCsrfToken" />

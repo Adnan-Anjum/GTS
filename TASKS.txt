@@ -1,0 +1,3 @@
+1. show total price in last of the cart
+2. show total payable ammount after checkout
+3. show inches product in cart

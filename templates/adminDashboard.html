@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Add New Product</title>
+</head>
+
+<body>
+  <main class="adminMain" id="adminDashboard">
+    {% include "partials/adminSidebar.html" %}
+    <div class="adminWrapper">
+      <div class="contentWrapper">
+        <h1 class="container">Dashboard</h1>
+        <div class="container">
+          <!-- Cards -->
+          <div class="dashboardCards sectionSpaceBelow">
+            <div class="dashboardCard">
+              <div class="cardIcon">
+                <svg class="svg-icon svg-danger mr-4" id="h-03" width="50" height="52" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <style>
+                    .svg-danger {
+                      fill: rgba(185,100,106,.14);
+                      stroke: #b96369;
+                    }
+                  </style>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <div class="cardText text-right">
+                <h2>{{cardData.totalSale}}</h2>
+                <p class="color-pink">Completed<br>Orders</p>
+              </div>
+            </div>
+            <div class="dashboardCard">
+              <div class="cardIcon">
+                <svg class="svg-icon svg-blue" width="50" height="52" id="h-01" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <style>
+                    .svg-blue {
+                      fill: rgba(201, 220, 255, .4);
+                      stroke: #695877;
+                    }
+                  </style>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 10H14V3.512A9.025 9.025 0 0120.488 9z"></path>
+                </svg>
+              </div>
+              <div class="cardText text-right">
+                <h2>{{cardData.totalRevenue}}</h2>
+                <p class="color-purple">Collected<br>Revenue</p>
+              </div>
+            </div>
+
+            <div class="dashboardCard">
+              <div class="cardIcon">
+                <svg class="svg-icon svg-success mr-4" width="50" height="52" id="h-02" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <style>
+                    .svg-success {
+                      fill: rgba(170, 250, 215, .4);
+                      stroke: #558c70;
+                    }
+                  </style>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <div class="cardText text-right">
+                <h2>{{cardData.totalOrders}}</h2>
+                <p class="color-green">Pending<br>Orders</p>
+              </div>
+            </div>
+            <div class="dashboardCard">
+              <div class="cardIcon">
+                <svg class="svg-icon svg-blue" width="50" height="52" id="h-01" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <style>
+                    .svg-blue {
+                      fill: rgba(201, 220, 255, .4);
+                      stroke: #695877;
+                    }
+                  </style>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 10H14V3.512A9.025 9.025 0 0120.488 9z"></path>
+                </svg>
+              </div>
+              <div class="cardText text-right">
+                <h2>{{cardData.pendingRevenue}}</h2>
+                <p class="color-purple">Pending<br>Revenue</p>
+              </div>
+            </div>
+          </div>
+          <!-- Graph and Filters -->
+          <div id="graphContainer" class="graphContainer sectionSpaceBelow">
+            <div class="filterSection sectionSpaceBelow">
+              <h2>Orders Placed</h2>
+              <input type="text" name="dateRange" onchange="enableFilterBtn()" id="dateRange" class="dateRange" readonly/>
+              <select name="filterSelect" onchange="enableFilterBtn()" id="filterSelect">
+                <option value="ordersPlaced">Orders Placed</option>
+                <option value="ordersCompleted">Orders Completed</option>
+              </select>
+              <button id="filterBtn" onclick="applyFilter()" type="button" class="btn btn-purple" disabled>Apply Filter</button>
+            </div>
+            <canvas id="dashboardGraph" data-currentFilter="ordersPlaced" style="width: 100%; height: 40rem; max-width: 1200px; margin: auto;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/admin/adminDashboard.js"></script>
+  </main>
+  {% include "partials/siteFooter.html" %}
+</body>
+
+</html>

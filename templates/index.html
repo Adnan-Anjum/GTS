@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  {% include "partials/siteHeader.html" %}
+  <main id="homepage">
+    <!-- Landing Section -->
+    <!-- <section class="landing sectionSpaceBelow">
+      <div class="text-center"> -->
+        <!-- <h2>Let our candles transport you to a world of peace and relaxation</h2> -->
+        <!-- <a href="/shop/" class="btn btn-primary">Shop Now</a>
+      </div>
+      <div class="imagesOverlay"></div>
+      <div class="imageGrid">
+        <img src="/static/images/fragrance_2.jpeg" alt="Landing Banner 1" />
+        <img src="/static/images/container_2.jpeg" alt="Landing Banner 2" />
+        <img src="/static/images/essentials_2.jpeg" alt="Landing Banner 3" />
+      </div>
+    </section> -->
+    <!-- /Landing Section -->
+    <!-- Welcome Section -->
+    <section class="welcome sectionSpaceBelow">
+      <!-- <article class="container">
+        <h2 class="styledHeading">Just for you</h2>
+        <h2 class="sectionHeading">Welcome to <span class="color-purple">Grace the Space</span> <span class="color-pink fontScript">Supplies</span></h2>
+        <p class="introText">
+          Our dreamy scents are inspired by nature and travel, moments and memories.
+          We hand-pour our candles in our Olars shop using sustainable soy wax
+          and phthalate-free perfume oils infused with essential oils.
+        </p>
+      </article> -->
+      <div class="showcaseGrid container my_container">
+        <a href="/shop/fragranceOils/" class="showcaseItem odd img_container">
+          <img src="/static/images/fragrance_4.jpeg" alt="Floral Fragrance Oil" />
+          <p class="on_img_text">NATURAL <br> FRAGRANCE</p>
+          <button class="Shop_now btn btn-primary"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Candle Containers</h4>
+            <p class="btn btnArrow color-pink">View All</p>
+            <p>{{candleContainersCount}} Products</p> -->
+            <!-- <p class="btn btnArrow shop_now">View All</p>
+            <p>{{candleContainersCount}} Products</p> -->
+        </a>
+        <a href="/shop/candleContainers/" class="showcaseItem even img_container">
+          <img src="/static/images/containers_4.jpeg" alt="60ml Candle Container" />
+          <p class="on_img_text_even">GLASS<br>CONTAINERS</p>
+          <button class="Shop_now_even btn btn-primary"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Fragrance Oils</h4>
+            <p class="btn btnArrow color-pink">View All</p>
+            <p>{{fragranceOilsCount}} Products</p> -->
+            <!-- <p class="btn btnArrow">View All</p>
+            <p>{{fragranceOilsCount}} Products</p>  -->
+        </a>
+        <a href="/shop/waxes/" class="showcaseItem odd img_container">
+          <img src="/static/images/wax_4.jpeg" alt="Gel Wax" />
+          <p class="on_img_text">CANDLE<br>WAX</p>
+          <button class="Shop_now btn btn-primary"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Waxes</h4>
+            <p class="btn btnArrow color-pink">View All</p>
+            <p>{{waxesCount}} Products</p> -->
+            <!-- <p class="btn btnArrow">View All</p>
+            <p>{{waxesCount}} Products</p> -->
+        </a>
+        <a href="/shop/candleWicks/" class="showcaseItem odd img_container">
+          <img src="/static/images/wicks_4.jpeg" alt="Eco Braided Wicks" />
+          <p class="on_img_text">CANDLE <br>WICKS</p>
+          <button class="Shop_now btn btn-primary"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Candle Wicks</h4>
+            <p class="btn btnArrow color-pink">View All</p>
+            <p>{{candleWicksCount}} Products</p> -->
+            <!-- <p class="btn btnArrow">View All</p>
+            <p>{{candleWicksCount}} Products</p> -->
+        </a>
+        <a href="#" class="showcaseItem even img_container">
+          <img src="/static/images/molds_4.jpeg" alt="Silicon Molds" />
+          <p class="on_img_text_even">SILICONE<br>MOLDS</p>
+          <button class="Shop_now_even btn btn-primary"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Candle Wicks</h4>
+            <p class="btn btnArrow">View All</p>
+            <p>{{candleWicksCount}} Products</p> -->
+        </a>
+        <a href="/shop/essentials/" class="showcaseItem odd img_container">
+          <img src="/static/images/essentials_4.jpeg" alt="Eco Braided Wicks" />
+          <p class="on_img_text">ESSENTIAL <br> SUPPLIES</p>
+          <button class="Shop_now btn btn-primary extr_shop_now"><small>Shop Now</small></button>
+          <!-- <div class="showcaseInfo">
+            <h4>Candle Wicks</h4>
+            <p class="btn btnArrow">View All</p>
+            <p>{{candleWicksCount}} Products</p> -->
+        </a>
+      </div>
+    </section>
+    <!-- /Welcome Section -->
+
+    <!-- Recommended Shelf -->
+    <section class="recommend">
+      <div class="container">
+        <h2 class="styledHeading">Our Best</h2>
+        <h2 class="sectionHeading">Recommended For You</h2>
+        <div class="recommendGrid">
+          <a href="/shop/candleContainers/" class="recommendProduct odd">
+            <article class="desContainer">
+              <img src="/static/images/containers.jpg" alt="300 ml Container" />
+              <p class="productDesc">
+                A clear Glass Container is perfect for wax filling and making jar candles.
+                It's made up of high quality, heat resistant glass which can withstand heat
+                during the candle burning for a long duration.
+              </p>
+            </article>
+            <aside class="namePrice">
+              <h4>300 ML Clear Glass Container</h4>
+              <div class="priceGrid">
+                <p class="color-black">1 piece - &#8377; 90 per piece</p>
+                <p class="color-black">24 pieces - &#8377; 80 per piece</p>
+                <p class="color-black">72 pieces - &#8377; 70 per piece</p>
+                <p class="color-black">144 pieces - &#8377; 65 per piece</p>
+              </div>
+            </aside>
+          </a>
+          <a href="/shop/waxes/" class="recommendProduct even">
+            <article class="desContainer">
+              <img src="/static/images/wax_2.jpeg" alt="Soy wax" />
+              <p class="productDesc">
+                Soy 464-grade chunks are perfect for making jar candles. It is a premium
+                variant that is 100% pure and free from any adulteration. No addition is
+                required just melt and pour. It gives a soft and smooth finish to the candle,
+                derived from natural soy and filtered for top quality.
+              </p>
+            </article>
+            <aside class="namePrice">
+              <h4>Soy Wax</h4>
+              <div class="priceGrid">
+                <p class="color-black">1 kg - &#8377; 300 / kg</p>
+                <p class="color-black">30 kg - &#8377; 240 / kg</p>
+                <p class="color-black">100 kg - &#8377; 225 / kg</p>
+              </div>
+            </aside>
+          </a>
+          <a href="/shop/candleWicks/" class="recommendProduct even">
+            <article class="desContainer">
+              <img src="/static/images/wicks.jpg" alt="Basic Cotton Wicks" />
+              <p class="productDesc">Quantity is fixed at 1000 pieces</p>
+            </article>
+            <aside class="namePrice">
+              <h4>Basic Cotton Wicks</h4>
+              <div class="priceGrid">
+                <p class="color-black">1 inch - &#8377; 0.75</p>
+                <p class="color-black">2 inch - &#8377; 0.80</p>
+                <p class="color-black">3 inch - &#8377; 0.85</p>
+                <p class="color-black">4 inch - &#8377; 0.90</p>
+                <p class="color-black">5 inch - &#8377; 1.0</p>
+                <p class="color-black">6 inch - &#8377; 1.25</p>
+                <p class="color-black">7 inch - &#8377; 1.50</p>
+              </div>
+            </aside>
+          </a>
+        </div>
+        <div class="text-center">
+          <a href="/shop/" class="btn btnLink">View All Products</a>
+        </div>
+      </div>
+    </section>
+    <!-- /Recommended Shelf -->
+
+    <!-- Testimonials Section -->
+    <section class="testimonialsWrapper">
+      <div class="container">
+        <h2 class="styledHeading">Testimonials</h2>
+        <h2 class="sectionHeading">Our Happy Clients</h2>
+        <div class="carouselWrapper">
+          <button class="carouselBtn carouselLeft" id="testimonialsCarouselLeft">
+            <img src="/static/images/carouselArrow.svg" alt="move left" />
+          </button>
+          <div class="carouselOverflow">
+            <div id="testimonialsCarouselContainer" class="carouselContainer">
+              <div class="carouselItem">
+                <h3 class="testimonialsText">
+                  If you like a cinnamon scent with a hint of apple thrown in,
+                  then you'll love this candle. I light this candle and leave
+                  it lit all day. It last a long time. Seller provided fast shipping.
+                </h3>
+                <p>Sakshi Verma</p>
+              </div>
+              <div class="carouselItem">
+                <h3 class="testimonialsText">
+                  The scent is refreshing and sweet, but not too overwhelming,
+                  and it reminds me of strolling on the beaches of Hawaii, i.e.
+                  heaven. I also love the cute, millennial-pink color...
+                </h3>
+                <p>Rahul Kumar</p>
+              </div>
+              <div class="carouselItem">
+                <h3 class="testimonialsText">
+                  I love this candle so much! I always buy one at the start of
+                  the holiday season. The scent reminds me of when I was a little
+                  girl in Oregon on Christmas Day.
+                </h3>
+                <p>Minal Kaur</p>
+              </div>
+            </div>
+          </div>
+          <button class="carouselBtn carouselRight" id="testimonialsCarouselRight">
+            <img src="/static/images/carouselArrow.svg" alt="move right" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- =@ GALARY SECTION -->
+
+    <section class="galary_section">
+      <div>
+        <h2 class="styledHeading">Galary</h2>
+        <h2 class="sectionHeading">Our Upcomming Products</h2>
+      </div>
+      <div class="recommendGrid">
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/containers_4.jpeg" alt="300 ml Container"/>
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/fragrance_4.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/wax_4.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/molds_4.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/container_2.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/fragrance_2.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/essentials_4.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+        <a href="/shop/candleContainers/" class="my_galary_item">
+          <article class="desContainer">
+            <img src="/static/images/wicks_4.jpeg" alt="300 ml Container" />
+          </article>
+        </a>
+      </div>
+    </section>
+    <!-- /Testimonials Section -->
+    {% include "partials/siteFooter.html" %}
+  </main>
+  <script src="/static/js/common.js"></script>
+</body>
+
+</html>

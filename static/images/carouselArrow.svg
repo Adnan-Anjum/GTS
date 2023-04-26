@@ -1,0 +1,11 @@
+<svg version="1.1" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="282.3299865722656 405.3299865722656 30.339996337890625 30.339996337890625" style="enable-background:new 0 0 595.28 841.89;" xml:space="preserve">
+    <style type="text/css">
+        .stCarouselArrow{fill:none;stroke:#000000;stroke-miterlimit:10;}
+    </style>
+    <g>
+        <g>
+            <line class="stCarouselArrow" x1="291.99" y1="417.62" x2="297.75" y2="423.38"></line>
+            <line class="stCarouselArrow" x1="297.25" y1="423.38" x2="303.01" y2="417.62"></line>
+        </g>
+    </g>
+</svg>

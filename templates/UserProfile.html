@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="/static/css/styles.min.css"> -->
+        {% include "partials/cdn.html" %}
+    </head>
+
+    <body>
+        {% include "partials/siteHeader.html" %}
+        {% if temp == 0 %}
+        <main id="customerLogin" class="user_profile">
+            <div class="profilecontainer">
+                <div class="profileDiv">
+                    <h3 class="profileContent"><span>Name</span> <br><span class="span"> {{key.name}}</span></h3>
+                    <h3 class="profileContent"><span>Email</span> <br><span class="span"> {{key.email}}</span></h3>
+                    <!-- <h3 class="profileContent">Contact Number <span>{{key.contactNumber}}</span></h3> -->
+                </div>
+            </div>
+        </main>
+        {% endif %}
+        <!-- <p>{{orders}}</p> -->
+        {% if orders %}
+            {% include "Orders.html" %}
+        <div class="logout">
+            <button onclick="customerLogout()">Log out</button>
+        </div>
+        {% else %}
+        <p>No orders yet</p>
+        <div class="logout">
+            <button onclick="customerLogout()">Log out</button>
+        </div>
+        {% endif %}
+        <!-- {% if orders %}
+        {% for each in orders %}
+            <p>Order Date : {{each.orderDate}}</p>
+            <p>Order Amount :  {{each.orderAmount}}</p>
+            <p>Order Status : {{each.orderStatus}}</p>
+            <p>{{each}}</p> -->
+        <!-- <hr>
+        {% endfor %}
+    {% else %}
+        <p>No orders yet</p> -->
+        <!-- {% endif %} -->
+        {% include "partials/siteFooter.html" %}
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/showOrders.js"></script>
+        
+    </body>
+</html>

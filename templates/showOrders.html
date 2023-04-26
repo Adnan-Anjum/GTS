@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {% include "partials/cdn.html" %}
+    </head>
+    <body>
+        {% include "partials/siteHeader.html" %}
+        <div class="showContainer">
+            <div class="showItemContainer">
+                {% if order.containerCart %}
+                {% for size,item in order.containerCart.items %}
+                <article class="showArticles">
+                    <h3>{{size}} Container</h3>
+                    {% for each in item %}
+                    <p> Set : {{each.set}}</p>
+                    <p>Color : {{each.color}} </p>
+                    <p> Quantity : {{each.qnt}}</p>
+                    {% endfor %}
+                    
+                </article>
+                {% endfor %}
+                {% endif %}
+                {% if order.cartItemId %}
+                {% for each in order.cartItemId %}
+                <article class="showArticles">
+                    <h3>{{each.productName}}</h3>
+                    <p>Quantity : {{each.quantity}}</p>
+                </article>
+                {% endfor %}
+                {% endif %}
+                {% if order.inchesCart %}
+                <article class="showArticles">
+                    <h3>Basic Cotton Wicks</h3>
+                    {% for a in order.inchesCart %}
+                    <p>Size : {{a.size}}</p>
+                    <p>Quantity : {{a.qnt}}</p>
+                    {% endfor %}
+                </article>
+                {% endif %}
+            </div>
+        </div>
+        {% include "partials/siteFooter.html" %}
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/cart.js"></script>
+    </body>
+</html>

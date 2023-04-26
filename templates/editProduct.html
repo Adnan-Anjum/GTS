@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include "partials/cdn.html" %}
+  <title>Grace the Space | Add New Product</title>
+</head>
+
+<body>
+  <main class="adminMain" id="editProduct">
+    <!-- Updation modal -->
+    <div id="shopModalBackDrop" class="shopModalBackDrop" onclick="toggleShopModal()"></div>
+    <form id="editProductForm" onsubmit="submitEditProductForm(event)" class="shopModal">
+      <img id="modalProductImg" src="" alt="" />
+      <div class="shopModalInfo">
+        <input type="hidden" name="productId" id="modalProductId" class="inputToSend" />
+        <div class="inputContainer">
+          <label for="modalProductTitle">Product Name</label>
+          <input type="text" name="productName" id="modalProductTitle" class="formInput inputToSend" />
+        </div>
+        <div class="inputContainer">
+          <label for="modalProductPrice">Product Price</label>
+          <textarea id="modalProductPrice" rows="4" class="formInput"></textarea>
+          <small>Add all Items comma Separated</small>
+        </div>
+        <div class="inputContainer">
+          <label for="productImage">Change Image</label>
+          <input type="file" accept=".png,.jpeg,.jpg" onchange="phototoString(event)" class="formInput" id="productImage" />
+          <input type="hidden" name="productImage" id="modalProductImgInput" class="inputToSend" />
+        </div>
+      </div>
+      <div class="shopModalCta">
+        <div class="inputContainer">
+          <label for="modalProductDescription">Product Description</label>
+          <textarea name="description" id="modalProductDescription" rows="4" class="formInput inputToSend"></textarea>
+        </div>
+        <div class="inputContainer">
+          <label for="modalProductWidth">Product Width</label>
+          <input type="number" step="0.1" name="width" id="modalProductWidth" class="formInput inputToSend" />
+        </div>
+        <div class="inputContainer">
+          <label for="modalProductHeight">Product Height</label>
+          <input type="number" step="0.1" name="height" id="modalProductHeight" class="formInput inputToSend" />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Update Info</button>
+        </div>
+      </div>
+    </form>
+    <!-- /Updation modal -->
+
+    {% include "partials/adminSidebar.html" %}
+    <div class="adminWrapper">
+      <div class="contentWrapper sectionSpaceBelow">
+        <h1 class="text-center">Choose a Product</h1>
+        <div class="productContainer">
+          {% for product in productList %}
+          <button id="{{product.docId}}" onclick="addProductData(event)" class="productItem">
+            <img src="{{product.productImage}}" alt="{{product.productName}}" class="productImg" />
+            <p class="productTitle">{{product.productName}}</p>
+            <div id="productPriceContainer">
+              {% for price in product.productPriceInfo %}
+              <p class="productPrice">{{price}}</p>
+              {% endfor %}
+            </div>
+            <p class="d-none productDescription">{{product.description}}</p>
+            <p class="d-none productWidth">{{product.width}}</p>
+            <p class="d-none productHeight">{{product.height}}</p>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/admin/editProduct.js"></script>
+  </main>
+  {% include "partials/siteFooter.html" %}
+</body>
+
+</html>

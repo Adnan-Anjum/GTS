@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "partials/cdn.html" %}
+    <title>Grace the Space | Shop</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    {% include "partials/siteHeader.html" %}
+    <section class="welcome sectionSpaceBelow my_section">
+        <article class="container">
+            <h2 class="styledHeading mine">Just for you</h2>
+            <h2 class="sectionHeading">Pick Your <span class="color-purple">Favrouite Container</span> 
+                <!-- <span class="color-pink fontScript">Supplies</span></h2> -->
+        </article>
+        <div class="selecSize" id="main_div">
+            <!-- <h1>{{size}}</h1> -->
+            <div class="forGrid">
+            {% for a in size %}
+                <a href="{% url 'main:productsBySubcategory' a %}" class="sizeInputAnchor">
+                    <img src="" alt="">
+                    {{a}}
+                </a>
+            {% endfor %}
+            </div>
+        </div> 
+    </section>
+    {% include "partials/siteFooter.html" %}
+</body>
+
+<script src="/static/js/sizeInput.js"></script>
+<script src="/static/js/common.js"></script>
+</html>
+
+
+<!-- href="/shop/candleContainers/{{category.name}} -->

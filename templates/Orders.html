@@ -1,0 +1,23 @@
+<div class="myOrdermain">
+    <section class="myOrderContainer">
+        <h3 class="myOrders">My orders </h3>
+        <div class="myOrderGridContainer">
+            {% for eachOrder in orders %}
+                {% if eachOrder.orderStatus == 'pending' %}
+                    <a href="{% url 'main:showOrders' eachOrder.docId %}" class="eachOrder">
+                        <p class="orderContent">Order Date :
+                            {{eachOrder.orderDate}}</p>
+                        <p class="orderContent">Total Amount :
+                            &#8377; {{eachOrder.orderAmount}}</p>
+                        <p class="orderContent">Order Status :
+                            {{eachOrder.orderStatus}}</p>
+                        <!-- <p class="orderContent">Order Id : {{eachOrder.docId}}</p> -->
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+
+

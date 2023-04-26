@@ -1,0 +1,14 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# pyc files
+
+/unglitch/_pychache_/*.pyc
+*.pyc
+
+__pycache__
+**/__pycache__/
+unglitchTech.zip

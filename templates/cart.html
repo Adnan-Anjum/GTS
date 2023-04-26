@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% include "partials/cdn.html" %}
+    <title>Grace the Space | Login / Register</title>
+  </head>
+
+  <body>
+    {% include "partials/siteHeader.html" %}
+    <main id="cartPage">
+      <!-- Landing Section -->
+      <section class="allPagesBanner sectionSpaceBelow">
+        <h1>Cart</h1>
+      </section>
+      <!-- /Landing Section -->
+      <!-- Cart items -->
+      {% if cartItemList|length == 0 and not containerProducts and not inchesProduct %}
+      <section class="text-center sectionSpaceBelow">
+        <h2>No Items in your cart</h2>
+      </section>
+      {% else %}
+      <section id="cartWrapper" class="cartWrapper sectionSpaceBelow">
+        <!-- =? OTHER PRODUCTS -->
+        <div class="container" style="margin-bottom: 2em;">
+          {% for cartItem in cartItemList %}
+          <article class="shopModal">
+            <img id="modalProductImg" src="{{cartItem.productImage}}"
+              alt="{{cartItem.name}}" />
+            <div class="shopModalInfo">
+              <h2 id="modalProductTitle">{{cartItem.name}}</h2>
+              <h4 id="modalProductPrice">
+                {% for price in cartItem.productPriceInfo %}
+                {% if forloop.count == 1 %}
+                {{price}}
+                {% else %}
+                <br>{{price}}
+                {% endif %}
+                {% endfor %}
+              </h4>
+            </div>
+            <div class="shopModalCta">
+              <p class="modalProductDescription">{{cartItem.description}}</p>
+              {% if cartItem.width != '' %}
+              <p class="modalProductDimensions">{{cartItem.width}} inches X
+                {{cartItem.height}} inches</p>
+              {% endif %}
+              <p class="color-purple">{{cartItem.cartQuantity}} unit(s) added</p>
+              {% for a in total_product_price %}
+              {% if a.name == cartItem.productName %}
+              <p><strong class="color-pink productFinalPrice"
+                  id="product_price">{{a.price}}</strong></p>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </article>
+        </div>
+          {% endfor %}
+          <!-- =? CONTAINER PRODUCTS -->
+          <div class="container">
+            {% if containerProducts %}
+              <input type="hidden" id="containerProducts"
+              value={{containerProducts}}>
+              {% for key,item in containerProducts.items %}
+                {% if item %}
+                  {% for each in item %}
+                    <article class="shopModal">
+                      <img id="modalProductImg" src="/static/images/container_2.jpeg"
+                        alt="{{cartItem.name}}" />
+                      <div class="shopModalInfo">
+                        <h2 id="modalProductTitle">{{key}} Containers</h2>
+                        <p>Set: {{each.set}}</p>
+                        <p>Color: {{each.color}}</p>
+                        <p>Quantity: {{each.qnt}}</p>
+                        <p>Lid Type: Wooden</p>
+                        <p><strong class="color-pink productFinalPrice">{{each.amount}}</strong></p>
+                      </div>
+                    </article>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+
+            <!-- =? INCHES PRODUCT -->
+            <div class="container" style="margin-top: 2em;">
+              {% if inchesProduct %}
+              <input type="hidden" id="inchesProduct"
+                value={{inchesProduct}}>
+              {% for item in inchesProduct %}
+              <article class="shopModal">
+                <img id="modalProductImg" src="/static/images/wicks.jpg"
+                  alt="{{cartItem.name}}" />
+                <div class="shopModalInfo">
+                  <h2 id="modalProductTitle">{{item.name}}
+                    </h2>
+                  <h4 id="modalProductPrice">
+                    {% for price in item.productPriceInfo %}
+                    {% if forloop.count == 1 %}
+                    {{price}}
+                    {% else %}
+                    <br>{{price}}
+                    {% endif %}
+                    {% endfor %}
+                  </h4>
+                </div>
+                <div class="shopModalCta">
+                  <p>Size : {{item.size}} inch</p>
+                  <p class="color-purple">{{item.cartQuantity}} unit(s) added</p>
+                  <p><strong class="color-pink productFinalPrice"
+                      id="product_price">{{item.total_price}}</strong></p>
+                </div>
+              </article>
+              {% endfor %}
+              {% endif %}
+            </div>
+
+          </section>
+          <div id="checkoutBtn" class="text-center sectionSpaceBelow">
+            <button onclick="checkoutCartItems('{{loggedInCustomerId}}')"
+              class="btn btn-primary cstmCheckout">Checkout</button>
+            <input type="hidden" value="{{cartItemId}}" id="cartItemId" />
+          </div>
+          {% endif %}
+          <!-- /Cart items -->
+          {% include "partials/siteFooter.html" %}
+
+
+          <form action="/afterCheckout/" id="finalAmount" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="finalAmountInp" value="0"
+              name="finalAmountInp">
+          </form>
+        </main>
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/cart.js"></script>
+      </body>
+
+    </html>
